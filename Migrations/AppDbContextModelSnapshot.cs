@@ -180,6 +180,9 @@ namespace AbarrotesHogar.Migrations
 
                     b.HasKey("Id_producto");
 
+                    b.HasIndex("Nombre")
+                        .IsUnique();
+
                     b.ToTable("Productos");
                 });
 
