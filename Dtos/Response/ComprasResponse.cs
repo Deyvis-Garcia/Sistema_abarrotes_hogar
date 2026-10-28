@@ -1,5 +1,5 @@
-namespace AbarrotesHogar.Dtos;
-public class ComprasDto
+namespace AbarrotesHogar.Dtos.Response;
+public class ComprasResponse
 {
     public int Id_compra { get;  set; }
     public int Id_proveedor { get; set; }

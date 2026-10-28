@@ -5,7 +5,7 @@ public interface IRepositoryCompras
     void CrearCompra(Compras compras);
     Compras? BuscarCompraPorId(int id);
     List<Compras> ListarTodos();
+    Task<Compras> ActualizarComprasAsync(Compras compras);
     bool EliminarCompraPorId(int id);
-    void ActualizarCompra(Compras compras);
 
 }

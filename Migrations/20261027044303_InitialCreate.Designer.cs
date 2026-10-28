@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AbarrotesHogar.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20261019061412_InitialCreate")]
+    [Migration("20261027044303_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -135,11 +135,6 @@ namespace AbarrotesHogar.Migrations
                     b.Property<decimal>("Costo_unitario")
                         .HasColumnType("decimal(10,2)");
 
-                    b.Property<bool>("Estado")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
                     b.Property<DateTime>("Fecha_ingreso")
                         .HasColumnType("datetime2");
 
@@ -200,24 +195,41 @@ namespace AbarrotesHogar.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_proveedor"));
 
                     b.Property<string>("Correo")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Direccion")
+                        .IsRequired()
                         .HasColumnType("varchar(150)");
 
                     b.Property<bool>("Estado")
                         .HasColumnType("bit");
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Ruc")
+                        .IsRequired()
                         .HasColumnType("varchar(20)");
 
                     b.Property<string>("Telefono")
+                        .IsRequired()
                         .HasColumnType("varchar(20)");
 
                     b.HasKey("Id_proveedor");
+
+                    b.HasIndex("Correo")
+                        .IsUnique();
+
+                    b.HasIndex("Nombre")
+                        .IsUnique();
+
+                    b.HasIndex("Ruc")
+                        .IsUnique();
+
+                    b.HasIndex("Telefono")
+                        .IsUnique();
 
                     b.ToTable("Proveedores");
                 });
@@ -231,9 +243,11 @@ namespace AbarrotesHogar.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_usuario"));
 
                     b.Property<string>("Apellido")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Contraseña")
+                        .IsRequired()
                         .HasColumnType("varchar(255)");
 
                     b.Property<bool>("Estado")
@@ -242,15 +256,27 @@ namespace AbarrotesHogar.Migrations
                         .HasDefaultValue(true);
 
                     b.Property<string>("Nombre")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Usuario")
+                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("rol")
+                        .IsRequired()
                         .HasColumnType("varchar(30)");
 
                     b.HasKey("Id_usuario");
+
+                    b.HasIndex("Contraseña")
+                        .IsUnique();
+
+                    b.HasIndex("Nombre")
+                        .IsUnique();
+
+                    b.HasIndex("Usuario")
+                        .IsUnique();
 
                     b.ToTable("Usuarios");
                 });

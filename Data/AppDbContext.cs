@@ -18,6 +18,6 @@ public class AppDbContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         modelBuilder.Entity<Productos>().HasQueryFilter(p => p.Estado == true);
         modelBuilder.Entity<Usuarios>().HasQueryFilter(u => u.Estado == true);
-        modelBuilder.Entity<InventarioLotes>().HasQueryFilter(l => l.Estado == true);
+        modelBuilder.Entity<Proveedores>().HasQueryFilter(p => p.Estado == true);
     }
 }

@@ -35,11 +35,11 @@ namespace AbarrotesHogar.Migrations
                 {
                     Id_proveedor = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "varchar(100)", nullable: true),
-                    Ruc = table.Column<string>(type: "varchar(20)", nullable: true),
-                    Telefono = table.Column<string>(type: "varchar(20)", nullable: true),
-                    Direccion = table.Column<string>(type: "varchar(150)", nullable: true),
-                    Correo = table.Column<string>(type: "varchar(100)", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Ruc = table.Column<string>(type: "varchar(20)", nullable: false),
+                    Telefono = table.Column<string>(type: "varchar(20)", nullable: false),
+                    Direccion = table.Column<string>(type: "varchar(150)", nullable: false),
+                    Correo = table.Column<string>(type: "varchar(100)", nullable: false),
                     Estado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -53,11 +53,11 @@ namespace AbarrotesHogar.Migrations
                 {
                     Id_usuario = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "varchar(100)", nullable: true),
-                    Apellido = table.Column<string>(type: "varchar(100)", nullable: true),
-                    Usuario = table.Column<string>(type: "varchar(50)", nullable: true),
-                    Contraseña = table.Column<string>(type: "varchar(255)", nullable: true),
-                    rol = table.Column<string>(type: "varchar(30)", nullable: true),
+                    Nombre = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Apellido = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Usuario = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Contraseña = table.Column<string>(type: "varchar(255)", nullable: false),
+                    rol = table.Column<string>(type: "varchar(30)", nullable: false),
                     Estado = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
@@ -75,8 +75,7 @@ namespace AbarrotesHogar.Migrations
                     Fecha_ingreso = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Fecha_vencimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Cantidad_lote = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Costo_unitario = table.Column<decimal>(type: "decimal(10,2)", nullable: false),
-                    Estado = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                    Costo_unitario = table.Column<decimal>(type: "decimal(10,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -232,6 +231,48 @@ namespace AbarrotesHogar.Migrations
                 name: "IX_InventarioLotes_Id_producto",
                 table: "InventarioLotes",
                 column: "Id_producto");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Proveedores_Correo",
+                table: "Proveedores",
+                column: "Correo",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Proveedores_Nombre",
+                table: "Proveedores",
+                column: "Nombre",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Proveedores_Ruc",
+                table: "Proveedores",
+                column: "Ruc",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Proveedores_Telefono",
+                table: "Proveedores",
+                column: "Telefono",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_Contraseña",
+                table: "Usuarios",
+                column: "Contraseña",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_Nombre",
+                table: "Usuarios",
+                column: "Nombre",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_Usuario",
+                table: "Usuarios",
+                column: "Usuario",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ventas_Id_usuario",

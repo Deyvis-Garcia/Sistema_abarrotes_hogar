@@ -1,5 +1,5 @@
-namespace AbarrotesHogar.Dtos;
-public class ProveedorDto
+namespace AbarrotesHogar.Dtos.Response;
+public class ProveedorResponse
 {
     public int Id_proveedor{get; set;}
     public string? Nombre{get;set;}

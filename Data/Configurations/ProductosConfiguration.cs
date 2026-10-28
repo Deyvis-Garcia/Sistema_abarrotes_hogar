@@ -8,9 +8,13 @@ public class ProductosConfiguration : IEntityTypeConfiguration<Productos>
     public void Configure(EntityTypeBuilder<Productos> builder)
     {
         builder.HasKey(p => p.Id_producto);
+        builder.Property(p => p.Id_producto).UseIdentityColumn(seed: 1, increment: 1);
         builder.Property(p => p.Nombre).IsRequired().HasColumnType("varchar(100)");
         builder.Property(p => p.Descripcion).IsRequired().HasColumnType("varchar(200)");
         builder.Property( p => p.precio_venta).IsRequired().HasColumnType("decimal(10,2)");
         builder.Property(p => p.Estado).HasDefaultValue(true).IsRequired();
+
+        //CONFIGURACIONES PARA CAMPOS UNICOS
+        builder.HasIndex(p => p.Nombre).IsUnique();
     }
 }

@@ -1,0 +1,1180 @@
+{
+  "info": {
+    "_postman_id": "0b1f0f1e-0114-4adb-80f5-15d8aaadca51",
+    "name": "AbarrotesHogar",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56565899",
+    "_collection_link": "https://go.postman.co/collection/56565899-0b1f0f1e-0114-4adb-80f5-15d8aaadca51?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Compras",
+      "item": [
+        {
+          "name": "Listar Todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/compras",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "compras"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear Compra",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id_proveedor\": 2,\r\n  \"id_usuario\": 2,\r\n  \"fecha_compra\": \"2026-10-27T11:50:00\",\r\n  \"total\": 925.00,\r\n  \"observaciones\": \"Compra de stock inicial de abarrotes\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/compras",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "compras"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "actualizarCompra",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id_proveedor\": 2,\r\n  \"id_usuario\": 2,\r\n  \"fecha_compra\": \"2026-10-27T11:50:00\",\r\n  \"total\": 925.00,\r\n  \"observaciones\": \"Compra actualizada con observaciones revisadas\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/compras/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "compras",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "eliminarCompra",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/compras/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "compras",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "detalleCompras",
+      "item": [
+        {
+          "name": "ListarTodos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/detalleCompra",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "detalleCompra"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CrearDetalleCompra",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id_compra\": 2,\r\n  \"id_producto\": 2,\r\n  \"cantidad\": 50,\r\n  \"precio_unitario\": 18.50,\r\n  \"subtotal\": 925.00\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/detalleCompra",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "detalleCompra"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ActualizarDetalleCompra",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id_compra\": 2,\r\n  \"id_producto\": 2,\r\n  \"cantidad\": 45,\r\n  \"precio_unitario\": 18.50,\r\n  \"subtotal\": 832.50\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/detalleCompra/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "detalleCompra",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EliminarDetalleCompra",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/detalleCompra/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "detalleCompra",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "detalleVentas",
+      "item": [
+        {
+          "name": "ListarTodos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/detalleVenta",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "detalleVenta"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CrearDetalleVenta",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id_venta\": 2,\r\n  \"id_producto\": 2,\r\n  \"cantidad\": 2,\r\n  \"precio_unitario\": 21.50,\r\n  \"subtotal\": 43.00\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/detalleVenta",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "detalleVenta"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ActualizarDetalleVenta",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id_venta\": 2,\r\n  \"id_producto\": 2,\r\n  \"cantidad\": 2,\r\n  \"precio_unitario\": 22.00,\r\n  \"subtotal\": 44.00\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/detalleVenta/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "detalleVenta",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EliminarDetalleVenta",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/detalleVenta/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "detalleVenta",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "inventarioLotes",
+      "item": [
+        {
+          "name": "ListarTodos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "text"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/inventarioLotes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "inventarioLotes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "crearInventarioLotes",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id_producto\": 2,\r\n  \"fecha_ingreso\": \"2026-10-27T00:00:00\",\r\n  \"fecha_vencimiento\": \"2028-10-27T00:00:00\",\r\n  \"cantidad_lote\": 50.00,\r\n  \"costo_unitario\": 18.50\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/inventarioLotes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "inventarioLotes"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ActualizarInventarioLotes",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id_producto\": 1,\r\n  \"fecha_ingreso\": \"2026-10-27T00:00:00\",\r\n  \"fecha_vencimiento\": \"2028-10-27T00:00:00\",\r\n  \"cantidad_lote\": 45.00,\r\n  \"costo_unitario\": 18.50\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/inventarioLotes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "inventarioLotes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EliminarInventarioLotes",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/inventarioLotes/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "inventarioLotes",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "productos",
+      "item": [
+        {
+          "name": "listarTodos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/Productos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "Productos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CrearProducto",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Azucar Rubia 2kg\",\r\n  \"descripcion\": \"Azucar extra calidad de 2kg\",\r\n  \"precio_venta\": 12.50,\r\n  \"stock_actual\": 40,\r\n  \"stock_minimo\": 10\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/Productos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "Productos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ActualizarProducto",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Arroz Costeño 5kg Premium\",\n  \"descripcion\": \"Arroz extra superior bolsa de 5 kilos - Nueva presentación\",\n  \"precio_venta\": 22.00,\n  \"stock_actual\": 45,\n  \"stock_minimo\": 10,\n  \"estado\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/Productos/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "Productos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EliminarProducto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/Productos/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "Productos",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ListarEliminados",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/Productos/eliminados",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "Productos",
+                "eliminados"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ListarProductosPorId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/Productos/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "Productos",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "proveedores",
+      "item": [
+        {
+          "name": "ListarTodos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/proveedor",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "proveedor"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CrearProveedor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Distribuciones Glorias S.A.C.\",\r\n  \"ruc\": \"20601234523\",\r\n  \"telefono\": \"987654345\",\r\n  \"direccion\": \"Av. pampa hermosa 450, Lima\",\r\n  \"correo\": \"ventas@Glorias.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/proveedor",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "proveedor"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ActualizarProveedor",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Distribuciones Alimentary S.A.C.\",\r\n  \"ruc\": \"20601234567\",\r\n  \"telefono\": \"987654321\",\r\n  \"direccion\": \"Av. Colonial 1200, Lima\",\r\n  \"correo\": \"contacto@alimentary.com\",\r\n  \"estado\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/proveedor/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "proveedor",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EliminarProveedores",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/proveedor/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "proveedor",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ListarEliminados",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/proveedor/eliminados",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "proveedor",
+                "eliminados"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BuscarPorId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/proveedor/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "proveedor",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "usuarios",
+      "item": [
+        {
+          "name": "ListarTodos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CrearUsuario",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Johan\",\r\n  \"apellido\": \"Seancas\",\r\n  \"usuario\": \"Jseancas\",\r\n  \"contraseña\": \"SecurePassword12309\",\r\n  \"rol\": \"Administrador\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/usuarios",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "usuarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ActualizarUsuario",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"nombre\": \"Deyvis Eliezer\",\r\n  \"apellido\": \"Garcia Ruiz\",\r\n  \"usuario\": \"dgarcia\",\r\n  \"contraseña\": \"NewSecurePassword123*\",\r\n  \"rol\": \"Administrador\",\r\n  \"estado\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/usuarios/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "usuarios",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ListarEliminados",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/usuarios/eliminados",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "usuarios",
+                "eliminados"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "BuscarPorId",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/usuarios/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "usuarios",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EliminarUsuario",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/usuarios/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "usuarios",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ventas",
+      "item": [
+        {
+          "name": "ListarVentas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/ventas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "ventas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CrearVenta",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id_usuario\": 2,\r\n  \"fecha_venta\": \"2026-10-27T11:50:00\",\r\n  \"total\": 43.00,\r\n  \"observaciones\": \"Venta al contado\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/ventas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "ventas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ActualizarVenta",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id_usuario\": 2,\r\n  \"fecha_venta\": \"2026-10-27T11:50:00\",\r\n  \"total\": 44.00,\r\n  \"observaciones\": \"Venta actualizada con descuento aplicado\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/ventas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "ventas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "EliminarVentas",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/ventas/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "ventas",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

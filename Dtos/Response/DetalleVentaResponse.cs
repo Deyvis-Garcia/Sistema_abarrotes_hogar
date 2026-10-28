@@ -1,5 +1,5 @@
-namespace AbarrotesHogar.Dtos;
-public class DetalleVentaDto
+namespace AbarrotesHogar.Dtos.Response;
+public class DetalleVentaResponse
 {
     public int Id_detalle_venta{ get; set; }
     public int Id_venta{get;set;}

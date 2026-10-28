@@ -8,6 +8,7 @@ public class DetalleVentaConfiguration : IEntityTypeConfiguration<DetalleVenta>
     public void Configure(EntityTypeBuilder<DetalleVenta> builder)
     {
         builder.HasKey(v => v.Id_detalle_venta);
+        builder.Property(v => v.Id_detalle_venta).UseIdentityColumn(seed: 1, increment: 1);
         builder.Property(v => v.Precio_unitario).IsRequired().HasColumnType("decimal(10,2)");
         builder.Property(v => v.Subtotal).IsRequired().HasColumnType("decimal(10,2)");
         builder.HasOne<Ventas>().WithMany().HasForeignKey(v => v.Id_venta).OnDelete(DeleteBehavior.Cascade);

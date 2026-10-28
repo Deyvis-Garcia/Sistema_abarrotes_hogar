@@ -8,6 +8,7 @@ public class ComprasConfiguration : IEntityTypeConfiguration<Compras>
     public void Configure(EntityTypeBuilder<Compras> builder)
     {
         builder.HasKey(c => c.Id_compra);
+        builder.Property(c => c.Id_compra).UseIdentityColumn(seed: 1, increment: 1);
         builder.Property(c => c.Observaciones).HasColumnType("varchar(200)");
         builder.Property(c => c.Total).IsRequired().HasColumnType("decimal(10,2)");
         builder.HasOne<Usuarios>().WithMany().HasForeignKey(c => c.Id_usuario).OnDelete(DeleteBehavior.Restrict);

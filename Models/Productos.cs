@@ -1,7 +1,7 @@
 namespace AbarrotesHogar.Models;
 public class Productos
 {
-    public int Id_producto{get;set;}
+    public int Id_producto{get; private set;}
     public string? Nombre{get;set;}
     public string? Descripcion{get;set;}
     public decimal precio_venta{get;set;}
