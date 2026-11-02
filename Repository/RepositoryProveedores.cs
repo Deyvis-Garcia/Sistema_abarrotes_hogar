@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AbarrotesHogar.Repository;
 public class RepositoryProveedores : IRepositoryProveedores
 {
-    public readonly AppDbContext _context;
+    private readonly AppDbContext _context;
     public RepositoryProveedores( AppDbContext context)
     {
         _context = context;

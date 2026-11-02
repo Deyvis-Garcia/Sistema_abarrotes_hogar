@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AbarrotesHogar.Repository;
 public class RepositoryProductos : IRepositoryProductos
 {
-    public readonly AppDbContext _context;
+    private readonly AppDbContext _context;
     public RepositoryProductos(AppDbContext context)
     {
         _context = context;

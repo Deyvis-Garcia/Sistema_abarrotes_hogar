@@ -2,14 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 using AbarrotesHogar.Dtos.Request;
 using AbarrotesHogar.Dtos.Response;
 using AbarrotesHogar.Services.Interfaces;
-using AbarrotesHogar.Services;
+
 
 namespace AbarrotesHogar.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class InventarioLotesController : ControllerBase
 {
-    public IServicesInventarioLotes _servicesInventarioLotes;
+    private IServicesInventarioLotes _servicesInventarioLotes;
     public InventarioLotesController(IServicesInventarioLotes servicesInventarioLotes)
     {
         _servicesInventarioLotes = servicesInventarioLotes;

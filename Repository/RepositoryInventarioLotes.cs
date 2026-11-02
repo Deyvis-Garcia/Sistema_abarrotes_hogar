@@ -5,7 +5,7 @@ using AbarrotesHogar.Repository.Interfaces;
 namespace AbarrotesHogar.Repository;
 public class RepositoryInventarioLotes : IRepositoryInventarioLotes
 {
-    public readonly AppDbContext _context;
+    private readonly AppDbContext _context;
     public RepositoryInventarioLotes(AppDbContext context)
     {
         _context = context;

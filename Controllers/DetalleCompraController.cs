@@ -8,7 +8,7 @@ namespace AbarrotesHogar.Controllers;
 [ApiController]
 public class DetalleCompraController : ControllerBase
 {
-    public readonly IServicesDetalleCompra _servicesDetalleCompra;
+    private readonly IServicesDetalleCompra _servicesDetalleCompra;
     public DetalleCompraController(IServicesDetalleCompra servicesDetalleCompra)
     {
         _servicesDetalleCompra = servicesDetalleCompra;

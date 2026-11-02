@@ -2,14 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using AbarrotesHogar.Dtos.Request;
 using AbarrotesHogar.Dtos.Response;
 using AbarrotesHogar.Services.Interfaces;
-using AbarrotesHogar.Services;
 
 namespace AbarrotesHogar.Controllers;
 [Route("api/[controller]")]
 [ApiController]
 public class DetalleVentaController : ControllerBase
 {
-    public readonly IServicesDetalleVenta _servicesDetalleVenta;
+    private readonly IServicesDetalleVenta _servicesDetalleVenta;
     public DetalleVentaController(IServicesDetalleVenta servicesDetalleVenta)
     {
         _servicesDetalleVenta = servicesDetalleVenta;

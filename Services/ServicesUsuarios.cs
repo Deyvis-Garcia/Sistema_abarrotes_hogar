@@ -8,7 +8,7 @@ using AbarrotesHogar.Excepciones;
 namespace AbarrotesHogar.Services;
 public class ServicesUsuarios : IServicesUsuarios
 {
-    public readonly IRepositoryUsuarios _repositoryUsuarios;
+    private readonly IRepositoryUsuarios _repositoryUsuarios;
     public ServicesUsuarios(IRepositoryUsuarios repositoryUsuarios)
     {
         _repositoryUsuarios = repositoryUsuarios;

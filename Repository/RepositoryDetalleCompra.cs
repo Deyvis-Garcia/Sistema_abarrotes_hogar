@@ -5,7 +5,7 @@ using AbarrotesHogar.Repository.Interfaces;
 namespace AbarrotesHogar.Repository;
 public class RepositoryDetalleCompra : IRepositoryDetalleCompra
 {
-    public readonly AppDbContext _context;
+    private readonly AppDbContext _context;
     public RepositoryDetalleCompra(AppDbContext context)
     {
         _context = context;

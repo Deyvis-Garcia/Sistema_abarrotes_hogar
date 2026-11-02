@@ -4,12 +4,11 @@ using AbarrotesHogar.Repository.Interfaces;
 using AbarrotesHogar.Services.Interfaces;
 using AbarrotesHogar.Models;
 using AbarrotesHogar.Excepciones;
-using AbarrotesHogar.Repository;
 
 namespace AbarrotesHogar.Services;
 public class ServicesCompras : IServicesCompras
 {
-    public readonly IRepositoryCompras _repositoryCompras;
+    private readonly IRepositoryCompras _repositoryCompras;
     public ServicesCompras(IRepositoryCompras repositoryCompras)
     {
         _repositoryCompras = repositoryCompras;

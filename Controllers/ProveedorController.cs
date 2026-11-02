@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using AbarrotesHogar.Dtos.Request;
 using AbarrotesHogar.Dtos.Response;
 using AbarrotesHogar.Services.Interfaces;
-using AbarrotesHogar.Services;
 
 
 namespace AbarrotesHogar.Controllers;
@@ -10,7 +9,7 @@ namespace AbarrotesHogar.Controllers;
 [ApiController]
 public class ProveedorController : ControllerBase
 {
-    public readonly IServicesProveedor _servicesProveedor;
+    private readonly IServicesProveedor _servicesProveedor;
     public ProveedorController(IServicesProveedor servicesProveedor)
     {
         _servicesProveedor = servicesProveedor;

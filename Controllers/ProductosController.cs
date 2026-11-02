@@ -8,7 +8,7 @@ namespace AbarrotesHogar.Controllers;
 [ApiController]
 public class ProductosController : ControllerBase
 {
-    public readonly IServicesProducto _servicesProducto;
+    private readonly IServicesProducto _servicesProducto;
     public ProductosController(IServicesProducto servicesProducto)
     {
         _servicesProducto = servicesProducto;
