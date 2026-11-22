@@ -19,6 +19,5 @@ public class UsuariosConfigarition : IEntityTypeConfiguration<Usuarios>
         //CONFIGURACIONES PARA CAMPOS UNICOS
         builder.HasIndex(u => u.Nombre).IsUnique();
         builder.HasIndex(u => u.Usuario).IsUnique();
-        builder.HasIndex(u => u.Contraseña).IsUnique();
     }
 }

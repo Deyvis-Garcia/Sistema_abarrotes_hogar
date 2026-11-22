@@ -46,4 +46,20 @@ public class RepositoryProveedores : IRepositoryProveedores
         _context.SaveChanges();
         return true;
     }
+    public bool RecuperarProveedorPorId(int id)
+    {
+        Proveedores? proveedorEliminado = _context.Proveedores
+            .IgnoreQueryFilters()
+            .FirstOrDefault(p => p.Id_proveedor == id && !p.Estado);
+
+        if (proveedorEliminado == null)
+        {
+            return false;
+        }
+
+        proveedorEliminado.Estado = true;
+        _context.Proveedores.Update(proveedorEliminado);
+        _context.SaveChanges();
+        return true;
+    }
 }

@@ -41,12 +41,18 @@ public class ProductosController : ControllerBase
     public async Task<ActionResult<ProductoResponse>> ActualizarProducto(int id,[FromBody] ProductoRequest productoRequest)
     {
         var productoActualizado = await _servicesProducto.ActualizarProducto(id,productoRequest);
-        return Ok(productoRequest);
+        return Ok(productoActualizado);
     }
     [HttpDelete("{id}")]
     public IActionResult EliminarProductoPorId(int id)
     {
         _servicesProducto.EliminarProductoPorId(id);
         return NoContent();
+    }
+    [HttpPatch("{id}/recuperar")]
+    public ActionResult<ProductoResponse> RecuperarProducto(int id)
+    {
+        ProductoResponse producto = _servicesProducto.RecuperarProductoPorId(id);
+        return Ok(producto);
     }
 }

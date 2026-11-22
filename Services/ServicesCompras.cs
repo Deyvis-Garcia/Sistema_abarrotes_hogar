@@ -9,12 +9,19 @@ namespace AbarrotesHogar.Services;
 public class ServicesCompras : IServicesCompras
 {
     private readonly IRepositoryCompras _repositoryCompras;
-    public ServicesCompras(IRepositoryCompras repositoryCompras)
+    private readonly IRepositoryProveedores _repositoryProveedores;
+    private readonly IRepositoryUsuarios _repositoryUsuarios;
+
+    public ServicesCompras(IRepositoryCompras repositoryCompras,IRepositoryProveedores repositoryProveedores, IRepositoryUsuarios repositoryUsuarios)
     {
         _repositoryCompras = repositoryCompras;
+        _repositoryProveedores = repositoryProveedores;
+        _repositoryUsuarios = repositoryUsuarios;
     }
     public ComprasResponse CrearCompra(ComprasRequest comprasRequest)
     {
+        ValidarReferencias(comprasRequest.Id_proveedor, comprasRequest.Id_usuario);
+
         Compras nuevaCompra = new Compras
         {
             Id_proveedor = comprasRequest.Id_proveedor,
@@ -71,6 +78,8 @@ public class ServicesCompras : IServicesCompras
             throw new RecursoNoEncontradoException($"No se encontro la compra con el ID: {id}");
         }
 
+        ValidarReferencias(request.Id_proveedor, request.Id_usuario);
+
         compraExistente.Id_proveedor = request.Id_proveedor;
         compraExistente.Id_usuario = request.Id_usuario;
         compraExistente.Total = request.Total;
@@ -96,5 +105,18 @@ public class ServicesCompras : IServicesCompras
             throw new RecursoNoEncontradoException($"No se encontro la compra con el ID: {id}");
         }
         return _repositoryCompras.EliminarCompraPorId(id);
+    }
+
+    private void ValidarReferencias(int idProveedor, int idUsuario)
+    {
+        if (_repositoryProveedores.BuscarProveedorPorId(idProveedor) == null)
+        {
+            throw new RecursoNoEncontradoException($"No se encontro el proveedor con el ID: {idProveedor}");
+        }
+
+        if (_repositoryUsuarios.BuscarUsuarioPorId(idUsuario) == null)
+        {
+            throw new RecursoNoEncontradoException($"No se encontro el usuario con el ID: {idUsuario}");
+        }
     }
 }

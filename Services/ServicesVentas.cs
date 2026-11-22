@@ -9,12 +9,20 @@ namespace AbarrotesHogar.Services;
 public class ServicesVentas : IServicesVentas
 {
     private readonly IRepositoryVentas _repositoryVentas;
-    public ServicesVentas(IRepositoryVentas repositoryVentas)
+    private readonly IRepositoryUsuarios _repositoryUsuarios;
+
+    public ServicesVentas(IRepositoryVentas repositoryVentas, IRepositoryUsuarios repositoryUsuarios)
     {
         _repositoryVentas = repositoryVentas;
+        _repositoryUsuarios = repositoryUsuarios;
     }
     public VentasResponse CrearVenta(VentasRequest ventasRequest)
     {
+        if (_repositoryUsuarios.BuscarUsuarioPorId(ventasRequest.Id_usuario) == null)
+        {
+            throw new RecursoNoEncontradoException($"No se encontro el usuario con el ID: {ventasRequest.Id_usuario}");
+        }
+
         Ventas nuevaVentas = new Ventas
         {
             Id_usuario = ventasRequest.Id_usuario,
@@ -61,6 +69,12 @@ public class ServicesVentas : IServicesVentas
     {
         Ventas? ventasExistente = _repositoryVentas.BuscarVentasPorId(id);
         if(ventasExistente == null){throw new RecursoNoEncontradoException($"No se encontro la venta con el ID: {id}");};
+
+        if (_repositoryUsuarios.BuscarUsuarioPorId(ventasRequest.Id_usuario) == null)
+        {
+            throw new RecursoNoEncontradoException($"No se encontro el usuario con el ID: {ventasRequest.Id_usuario}");
+        }
+
         ventasExistente.Id_usuario = ventasRequest.Id_usuario;
         ventasExistente.Fecha_venta = ventasRequest.Fecha_venta;
         ventasExistente.Total = ventasRequest.Total;

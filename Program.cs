@@ -1,4 +1,7 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using AbarrotesHogar.Data;
 using AbarrotesHogar.Repository;
 using AbarrotesHogar.Repository.Interfaces;
@@ -28,7 +31,27 @@ builder.Services.AddScoped<IServicesProducto, ServicesProducto>();
 builder.Services.AddScoped<IServicesProveedor,ServicesProveedor>();
 builder.Services.AddScoped<IServicesUsuarios,ServicesUsuarios>();
 builder.Services.AddScoped<IServicesVentas, ServicesVentas>();
+// Inyeccion del servicio de autenticacion
+builder.Services.AddScoped<IServicesAuth, ServicesAuth>();
 
+// Configuracion de autenticacion y validacion del token JWT
+var claveJwt = builder.Configuration["Jwt:Key"]!;
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(claveJwt))
+        };
+    });
+
+builder.Services.AddAuthorization();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -46,6 +69,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Activacion del middleware de autenticacion del token antes de la autorizacion
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

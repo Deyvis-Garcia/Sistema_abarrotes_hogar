@@ -269,9 +269,6 @@ namespace AbarrotesHogar.Migrations
 
                     b.HasKey("Id_usuario");
 
-                    b.HasIndex("Contraseña")
-                        .IsUnique();
-
                     b.HasIndex("Nombre")
                         .IsUnique();
 

@@ -9,4 +9,5 @@ public interface IRepositoryProductos
     List<Productos> ListarTodosProductosEliminados();
     Task<Productos> ActualizarProductosAsync(Productos productos);
     bool EliminarProductosPorId(int id);
+    bool RecuperarProductoPorId(int id);
 }

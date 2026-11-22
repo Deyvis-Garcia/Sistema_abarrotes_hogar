@@ -108,4 +108,23 @@ public class ServicesProveedor : IServicesProveedor
         if(proveedorExistente == null){throw new RecursoNoEncontradoException($"No se encontro el proveedor con el ID: {id}");};
         return _repositoryProveedores.EliminarProveedorePorId(id);
     }
+    public ProveedorResponse RecuperarProveedorPorId(int id)
+    {
+        if (!_repositoryProveedores.RecuperarProveedorPorId(id))
+        {
+            throw new RecursoNoEncontradoException($"No se encontro el proveedor con el ID: {id}");
+        }
+
+        Proveedores proveedorRecuperado = _repositoryProveedores.BuscarProveedorPorId(id)!;
+        return new ProveedorResponse
+        {
+            Id_proveedor = proveedorRecuperado.Id_proveedor,
+            Nombre = proveedorRecuperado.Nombre,
+            Ruc = proveedorRecuperado.Ruc,
+            Telefono = proveedorRecuperado.Telefono,
+            Direccion = proveedorRecuperado.Direccion,
+            Correo = proveedorRecuperado.Correo,
+            Estado = proveedorRecuperado.Estado
+        };
+    }
 }

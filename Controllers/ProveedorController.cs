@@ -50,4 +50,10 @@ public class ProveedorController : ControllerBase
         _servicesProveedor.EliminarProvedorPorId(id);
         return NoContent();
     }
+    [HttpPatch("{id}/recuperar")]
+    public ActionResult<ProveedorResponse> RecuperarProveedor(int id)
+    {
+        ProveedorResponse proveedor = _servicesProveedor.RecuperarProveedorPorId(id);
+        return Ok(proveedor);
+    }
 }

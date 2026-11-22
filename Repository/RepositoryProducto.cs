@@ -46,4 +46,20 @@ public class RepositoryProductos : IRepositoryProductos
         _context.SaveChanges();
         return true;
     }
+    public bool RecuperarProductoPorId(int id)
+    {
+        Productos? productoEliminado = _context.Productos
+            .IgnoreQueryFilters()
+            .FirstOrDefault(p => p.Id_producto == id && !p.Estado);
+
+        if (productoEliminado == null)
+        {
+            return false;
+        }
+
+        productoEliminado.Estado = true;
+        _context.Productos.Update(productoEliminado);
+        _context.SaveChanges();
+        return true;
+    }
 }

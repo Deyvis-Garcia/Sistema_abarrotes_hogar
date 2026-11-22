@@ -37,6 +37,11 @@ public class ManejoErroresMiddleware(RequestDelegate siguiente, ILogger<ManejoEr
             status = 400;
             mensaje = ex.Message;
         }
+        else if (ex is UnauthorizedAccessException)
+        {
+            status = 401;
+            mensaje = ex.Message;
+        }
         else
         {
             status = 500;

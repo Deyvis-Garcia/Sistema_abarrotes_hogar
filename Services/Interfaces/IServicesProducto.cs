@@ -10,4 +10,5 @@ public interface IServicesProducto
     List<ProductoResponse> ListarTodosProductoEliminados();
     Task<ProductoResponse> ActualizarProducto(int id,ProductoRequest productoRequest);
     bool EliminarProductoPorId(int id);
+    ProductoResponse RecuperarProductoPorId(int id);
 }

@@ -49,4 +49,10 @@ public class UsuariosController : ControllerBase
         _servicesUsuarios.EliminarUsuarioPorId(id);
         return NoContent();
     }
+    [HttpPatch("{id}/recuperar")]
+    public ActionResult<UsuariosResponse> RecuperarUsuario(int id)
+    {
+        UsuariosResponse usuario = _servicesUsuarios.RecuperarUsuarioPorId(id);
+        return Ok(usuario);
+    }
 }

@@ -108,4 +108,23 @@ public class ServicesProducto : IServicesProducto
         if (productosExistente == null){throw new RecursoNoEncontradoException($"No se encontro el producto con el ID: {id}");};
         return _repositoryProductos.EliminarProductosPorId(id);
     }
+    public ProductoResponse RecuperarProductoPorId(int id)
+    {
+        if (!_repositoryProductos.RecuperarProductoPorId(id))
+        {
+            throw new RecursoNoEncontradoException($"No se encontro el producto con el ID: {id}");
+        }
+
+        Productos productoRecuperado = _repositoryProductos.BuscarProductoPorId(id)!;
+        return new ProductoResponse
+        {
+            Id_producto = productoRecuperado.Id_producto,
+            Nombre = productoRecuperado.Nombre,
+            Descripcion = productoRecuperado.Descripcion,
+            precio_venta = productoRecuperado.precio_venta,
+            stock_actual = productoRecuperado.stock_actual,
+            stock_minimo = productoRecuperado.stock_minimo,
+            Estado = productoRecuperado.Estado
+        };
+    }
 }

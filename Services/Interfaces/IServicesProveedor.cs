@@ -10,4 +10,5 @@ public interface IServicesProveedor
     List<ProveedorResponse> ListarTodosProveedorEliminados();
     Task<ProveedorResponse> ActualizarProveedor(int id,ProveedorRequest proveedorRequest);
     bool EliminarProvedorPorId(int id);
+    ProveedorResponse RecuperarProveedorPorId(int id);
 }

@@ -9,4 +9,5 @@ public interface IRepositoryProveedores
     List<Proveedores> ListarTodosProvedoresEliminados();
     Task<Proveedores> ActualizarProveedoresAsync(Proveedores proveedores);
     bool EliminarProveedorePorId(int id);
+    bool RecuperarProveedorPorId(int id);
 }
