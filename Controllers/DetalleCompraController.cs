@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AbarrotesHogar.Dtos.Request;
 using AbarrotesHogar.Dtos.Response;
@@ -6,6 +7,7 @@ using AbarrotesHogar.Services.Interfaces;
 namespace AbarrotesHogar.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class DetalleCompraController : ControllerBase
 {
     private readonly IServicesDetalleCompra _servicesDetalleCompra;
@@ -26,7 +28,7 @@ public class DetalleCompraController : ControllerBase
         return Ok(detalleCompra);
     }
     [HttpPost]
-    public ActionResult<ComprasResponse> CrearDetalleCompra([FromBody] DetalleCompraRequest detalleCompraRequest)
+    public ActionResult<DetalleCompraResponse> CrearDetalleCompra([FromBody] DetalleCompraRequest detalleCompraRequest)
     {
         var nuevoDetalleCompra = _servicesDetalleCompra.CrearDetalleCompra(detalleCompraRequest);
         return CreatedAtAction(nameof(BuscarDetalleCompraPorId),new{id = nuevoDetalleCompra.Id_detalle_compra},nuevoDetalleCompra);
@@ -37,7 +39,8 @@ public class DetalleCompraController : ControllerBase
         var actualizarDetalleCompra = await _servicesDetalleCompra.ActualizarDetalleCompraAsync(id,detalleCompraRequest);
         return Ok(actualizarDetalleCompra);
     }
-    [HttpDelete("{Id}")]
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "Administrador")]
     public IActionResult EliminarDetalleCompraPorId(int id)
     {
         _servicesDetalleCompra.EliminarDetalleComopraPorId(id);

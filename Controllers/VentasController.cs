@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AbarrotesHogar.Dtos.Request;
 using AbarrotesHogar.Dtos.Response;
@@ -7,6 +8,7 @@ using AbarrotesHogar.Services.Interfaces;
 namespace AbarrotesHogar.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class VentasController : ControllerBase
 {
     private readonly IServicesVentas _servicesVentas;
@@ -27,7 +29,7 @@ public class VentasController : ControllerBase
         return Ok(ventasId);
     }
     [HttpPost]
-    public ActionResult<VentasResponse> CrearVenta(VentasRequest ventasRequest)
+    public ActionResult<VentasResponse> CrearVenta([FromBody] VentasRequest ventasRequest)
     {
         var nuevaVenta = _servicesVentas.CrearVenta(ventasRequest);
         return CreatedAtAction(nameof(BuscarVentaPorId),new {id = nuevaVenta.Id_venta},nuevaVenta);
@@ -39,6 +41,7 @@ public class VentasController : ControllerBase
         return Ok(ventaActualizada);
     }
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Administrador")]
     public IActionResult EliminarVentasPorId(int id)
     {
         _servicesVentas.EliminarVentasPorId(id);

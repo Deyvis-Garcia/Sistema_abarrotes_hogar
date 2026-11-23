@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AbarrotesHogar.Dtos.Request;
 using AbarrotesHogar.Dtos.Response;
@@ -6,6 +7,7 @@ using AbarrotesHogar.Services.Interfaces;
 namespace AbarrotesHogar.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize(Roles = "Administrador")]
 public class UsuariosController : ControllerBase
 {
     private readonly IServicesUsuarios _servicesUsuarios;

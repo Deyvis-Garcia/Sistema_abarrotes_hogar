@@ -8,6 +8,7 @@ using AbarrotesHogar.Repository.Interfaces;
 using AbarrotesHogar.Services;
 using AbarrotesHogar.Services.Interfaces;
 using AbarrotesHogar.Middlewares;
+using AbarrotesHogar.Dtos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +49,20 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(claveJwt))
+        };
+        options.Events = new JwtBearerEvents
+        {
+            OnChallenge = async contexto =>
+            {
+                contexto.HandleResponse();
+                contexto.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                await contexto.Response.WriteAsJsonAsync(new ErrorResponse(StatusCodes.Status401Unauthorized, "No está autenticado o el token no es válido."));
+            },
+            OnForbidden = async contexto =>
+            {
+                contexto.Response.StatusCode = StatusCodes.Status403Forbidden;
+                await contexto.Response.WriteAsJsonAsync(new ErrorResponse(StatusCodes.Status403Forbidden, "No tiene permisos para realizar esta operación."));
+            }
         };
     });
 

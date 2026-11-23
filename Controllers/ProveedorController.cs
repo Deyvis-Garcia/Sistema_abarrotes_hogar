@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AbarrotesHogar.Dtos.Request;
 using AbarrotesHogar.Dtos.Response;
@@ -7,6 +8,7 @@ using AbarrotesHogar.Services.Interfaces;
 namespace AbarrotesHogar.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class ProveedorController : ControllerBase
 {
     private readonly IServicesProveedor _servicesProveedor;
@@ -27,30 +29,35 @@ public class ProveedorController : ControllerBase
         return Ok(proveedorId);
     }
     [HttpGet("eliminados")]
+    [Authorize(Roles = "Administrador")]
     public ActionResult<List<ProveedorResponse>> ListarTodosProveedorEliminados()
     {
         var provedoresEliminados = _servicesProveedor.ListarTodosProveedorEliminados();
         return Ok(provedoresEliminados);
     }
     [HttpPost]
+    [Authorize(Roles = "Administrador")]
     public ActionResult<ProveedorResponse> CrearProveedor([FromBody]ProveedorRequest proveedorRequest)
     {
         var nuevoProveedor = _servicesProveedor.CrearProveedor(proveedorRequest);
         return CreatedAtAction(nameof(BuscarProveedorPorId), new {id = nuevoProveedor.Id_proveedor},nuevoProveedor);
     }
     [HttpPut("{id}")]
+    [Authorize(Roles = "Administrador")]
     public async Task<ActionResult<ProveedorResponse>> ActualizarProveedor(int id,[FromBody] ProveedorRequest proveedorRequest)
     {
         var proveedorActualizado = await _servicesProveedor.ActualizarProveedor(id,proveedorRequest);
         return Ok(proveedorActualizado);
     }
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Administrador")]
     public IActionResult EliminarProvedorPorId(int id)
     {
         _servicesProveedor.EliminarProvedorPorId(id);
         return NoContent();
     }
     [HttpPatch("{id}/recuperar")]
+    [Authorize(Roles = "Administrador")]
     public ActionResult<ProveedorResponse> RecuperarProveedor(int id)
     {
         ProveedorResponse proveedor = _servicesProveedor.RecuperarProveedorPorId(id);

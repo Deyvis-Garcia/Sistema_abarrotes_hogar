@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using AbarrotesHogar.Dtos.Request;
 using AbarrotesHogar.Dtos.Response;
@@ -6,6 +7,7 @@ using AbarrotesHogar.Services.Interfaces;
 namespace AbarrotesHogar.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class DetalleVentaController : ControllerBase
 {
     private readonly IServicesDetalleVenta _servicesDetalleVenta;
@@ -38,6 +40,7 @@ public class DetalleVentaController : ControllerBase
         return Ok(detalleVentaActualizada);
     }
     [HttpDelete("{id}")]
+    [Authorize(Roles = "Administrador")]
     public IActionResult EliminarDetalleCompraPorId(int id)
     {
         _servicesDetalleVenta.EliminarDetalleVentaPorId(id);
