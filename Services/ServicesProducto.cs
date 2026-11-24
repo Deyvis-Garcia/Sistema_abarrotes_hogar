@@ -52,10 +52,10 @@ public class ServicesProducto : IServicesProducto
             Estado = productosExistente.Estado
         };
     }
-    public List<ProductoResponse> ListarTodosProducto()
+    public async Task<ResultadoPaginado<ProductoResponse>> ListarTodosProducto(int pagina, int tamano)
     {
-        List<Productos> productos = _repositoryProductos.ListarTodosProductos();
-        return productos.Select(p => new ProductoResponse
+        var (productos, total) = await _repositoryProductos.ListarTodosProductosAsync(pagina, tamano);
+        List<ProductoResponse> datos = productos.Select(p => new ProductoResponse
         {
             Id_producto = p.Id_producto,
             Nombre = p.Nombre,
@@ -65,6 +65,8 @@ public class ServicesProducto : IServicesProducto
             stock_minimo = p.stock_minimo,
             Estado = p.Estado
         }).ToList();
+
+        return new ResultadoPaginado<ProductoResponse>(datos, total, pagina, tamano);
     }
     public List<ProductoResponse> ListarTodosProductoEliminados()
     {

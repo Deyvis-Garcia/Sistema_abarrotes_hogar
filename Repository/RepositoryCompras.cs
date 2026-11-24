@@ -1,6 +1,7 @@
 using AbarrotesHogar.Data;
 using AbarrotesHogar.Models;
 using AbarrotesHogar.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace AbarrotesHogar.Repository;
 public class RepositoryCompras : IRepositoryCompras
@@ -19,9 +20,12 @@ public class RepositoryCompras : IRepositoryCompras
     {
         return _context.Compras.Find(id);
     }
-    public List<Compras> ListarTodos()
+    public async Task<(List<Compras> Datos, int Total)> ListarTodosAsync(int pagina, int tamano)
     {
-        return _context.Compras.ToList();
+        IQueryable<Compras> query = _context.Compras.AsNoTracking();
+        int total = await query.CountAsync();
+        List<Compras> datos = await query.OrderBy(c => c.Id_compra).Skip((pagina - 1) * tamano).Take(tamano).ToListAsync();
+        return (datos, total);
     }
     public async Task<Compras> ActualizarComprasAsync(Compras compras)
     {

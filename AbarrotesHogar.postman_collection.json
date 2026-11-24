@@ -127,6 +127,55 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "PaginacionCompras",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_13ww}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/compras?pagina=2&tamano=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "compras"
+              ],
+              "query": [
+                {
+                  "key": "pagina",
+                  "value": "2"
+                },
+                {
+                  "key": "tamano",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -679,6 +728,86 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "RecuperarUsuario",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/Productos/1/recuperar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "Productos",
+                "1",
+                "recuperar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PaginadoProductos",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0bi1}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/Productos?pagina=1&tamano=50",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "Productos"
+              ],
+              "query": [
+                {
+                  "key": "pagina",
+                  "value": "1"
+                },
+                {
+                  "key": "tamano",
+                  "value": "50"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -867,6 +996,37 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "RecuperarProveedor",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/Proveedor/1/recuperar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "Proveedor",
+                "1",
+                "recuperar"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -905,11 +1065,21 @@
         {
           "name": "CrearUsuario",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_13ww}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"nombre\": \"Johan\",\r\n  \"apellido\": \"Seancas\",\r\n  \"usuario\": \"Jseancas\",\r\n  \"contraseña\": \"SecurePassword12309\",\r\n  \"rol\": \"Administrador\"\r\n}",
+              "raw": "{\r\n  \"nombre\": \"Sebastian\",\r\n  \"apellido\": \"Quevedo\",\r\n  \"usuario\": \"SQuevedo\",\r\n  \"contraseña\": \"SecurePassword123129\",\r\n  \"rol\": \"Vendedor\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -1050,6 +1220,37 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "RecuperarUsuario",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/usuarios/1/recuperar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "usuarios",
+                "1",
+                "recuperar"
+              ]
+            }
+          },
+          "response": []
         }
       ]
     },
@@ -1173,8 +1374,174 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "PaginacionVentas",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_1dn9}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/ventas?pagina=2&tamano=5",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "ventas"
+              ],
+              "query": [
+                {
+                  "key": "pagina",
+                  "value": "2"
+                },
+                {
+                  "key": "tamano",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
         }
       ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "AutenticacionAdmin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"usuario\": \"Jseancas\",\r\n  \"contraseña\": \"SecurePassword12309\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AuttenticacionUsuario",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"usuario\": \"ECaballero\",\r\n   \"contraseña\": \"SecurePassword12312\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "AutenticacionVendedor",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"usuario\": \"SQuevedo\",\r\n  \"contraseña\": \"SecurePassword123129\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5056/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5056",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "json_web_token_157l",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0w1t",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_13ww",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_1dn9",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0bi1",
+      "secret": true
     }
   ]
 }

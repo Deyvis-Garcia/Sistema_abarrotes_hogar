@@ -20,9 +20,12 @@ public class RepositoryProductos : IRepositoryProductos
     {
         return _context.Productos.Find(id);
     }
-    public List<Productos> ListarTodosProductos()
+    public async Task<(List<Productos> Datos, int Total)> ListarTodosProductosAsync(int pagina, int tamano)
     {
-        return _context.Productos.ToList();
+        IQueryable<Productos> query = _context.Productos.AsNoTracking();
+        int total = await query.CountAsync();
+        List<Productos> datos = await query.OrderBy(p => p.Id_producto).Skip((pagina - 1) * tamano).Take(tamano).ToListAsync();
+        return (datos, total);
     }
     public List<Productos> ListarTodosProductosEliminados()
     {

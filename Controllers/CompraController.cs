@@ -16,9 +16,11 @@ public class ComprasController : ControllerBase
         _ServicesCompras = servicesCompras;
     }
     [HttpGet]
-    public ActionResult<List<ComprasResponse>> ListarTodosCompras()
+    public async Task<ActionResult<ResultadoPaginado<ComprasResponse>>> ListarTodosCompras([FromQuery] int pagina = 1,[FromQuery] int tamano = 10)
     {
-        var compra = _ServicesCompras.ListarTodosCompras();
+        pagina = Math.Max(1, pagina);
+        tamano = Math.Clamp(tamano, 1, 50);
+        var compra = await _ServicesCompras.ListarTodosCompras(pagina, tamano);
         return Ok(compra);
     }
     [HttpGet("{id}")]

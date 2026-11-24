@@ -56,10 +56,10 @@ public class ServicesCompras : IServicesCompras
             Observaciones = compra.Observaciones
         };
     }
-    public List<ComprasResponse> ListarTodosCompras()
+    public async Task<ResultadoPaginado<ComprasResponse>> ListarTodosCompras(int pagina, int tamano)
     {
-        List<Compras> compras = _repositoryCompras.ListarTodos();
-        return compras.Select( c => new ComprasResponse
+        var (compras, total) = await _repositoryCompras.ListarTodosAsync(pagina, tamano);
+        List<ComprasResponse> datos = compras.Select(c => new ComprasResponse
         {
             Id_compra = c.Id_compra,
             Id_proveedor = c.Id_proveedor,
@@ -68,6 +68,8 @@ public class ServicesCompras : IServicesCompras
             Total = c.Total,
             Observaciones = c.Observaciones
         }).ToList();
+
+        return new ResultadoPaginado<ComprasResponse>(datos, total, pagina, tamano);
     }
     public async Task<ComprasResponse> ActualizarComprasAsync(int id, ComprasRequest request)
     {

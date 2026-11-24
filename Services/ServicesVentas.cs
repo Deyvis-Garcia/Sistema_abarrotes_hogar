@@ -53,10 +53,10 @@ public class ServicesVentas : IServicesVentas
             Observaciones = ventasExistente.Observaciones
         };
     }
-    public List<VentasResponse> ListarTodosVentas()
+    public async Task<ResultadoPaginado<VentasResponse>> ListarTodosVentas(int pagina, int tamano)
     {
-        List<Ventas> ventas = _repositoryVentas.ListarTodosVentas();
-        return ventas.Select(v => new VentasResponse
+        var (ventas, total) = await _repositoryVentas.ListarTodosVentasAsync(pagina, tamano);
+        List<VentasResponse> datos = ventas.Select(v => new VentasResponse
         {
             Id_venta = v.Id_venta,
             Id_usuario = v.Id_usuario,
@@ -64,6 +64,8 @@ public class ServicesVentas : IServicesVentas
             Total = v.Total,
             Observaciones = v.Observaciones
         }).ToList();
+
+        return new ResultadoPaginado<VentasResponse>(datos, total, pagina, tamano);
     }
     public async Task<VentasResponse> ActualizarVentas(int id,VentasRequest ventasRequest)
     {

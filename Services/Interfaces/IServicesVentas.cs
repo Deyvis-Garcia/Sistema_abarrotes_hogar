@@ -6,7 +6,7 @@ public interface IServicesVentas
 {
     VentasResponse CrearVenta(VentasRequest request);
     VentasResponse? BuscarVentaPorId(int id);
-    List<VentasResponse> ListarTodosVentas();
+    Task<ResultadoPaginado<VentasResponse>> ListarTodosVentas(int pagina, int tamano);
     Task<VentasResponse> ActualizarVentas(int id,VentasRequest ventasRequest);
     bool EliminarVentasPorId(int id);
 }

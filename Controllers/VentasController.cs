@@ -17,9 +17,11 @@ public class VentasController : ControllerBase
         _servicesVentas = servicesVentas;
     }
     [HttpGet]
-    public ActionResult<List<VentasResponse>> ListarTodosVentas()
+    public async Task<ActionResult<ResultadoPaginado<VentasResponse>>> ListarTodosVentas([FromQuery] int pagina = 1,[FromQuery] int tamano = 10)
     {
-        var ventas = _servicesVentas.ListarTodosVentas();
+        pagina = Math.Max(1, pagina);
+        tamano = Math.Clamp(tamano, 1, 50);
+        var ventas = await _servicesVentas.ListarTodosVentas(pagina, tamano);
         return Ok(ventas);
     }
     [HttpGet("{id}")]

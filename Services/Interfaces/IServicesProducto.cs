@@ -6,7 +6,7 @@ public interface IServicesProducto
 {
     ProductoResponse CrearProducto(ProductoRequest request);
     ProductoResponse? BuscarProductoPorId(int id);
-    List<ProductoResponse> ListarTodosProducto();
+    Task<ResultadoPaginado<ProductoResponse>> ListarTodosProducto(int pagina, int tamano);
     List<ProductoResponse> ListarTodosProductoEliminados();
     Task<ProductoResponse> ActualizarProducto(int id,ProductoRequest productoRequest);
     bool EliminarProductoPorId(int id);

@@ -4,7 +4,7 @@ public interface IRepositoryVentas
 {
     void CrearVentas(Ventas ventas);
     Ventas? BuscarVentasPorId(int id);
-    List<Ventas> ListarTodosVentas();
+    Task<(List<Ventas> Datos, int Total)> ListarTodosVentasAsync(int pagina, int tamano);
     Task<Ventas> ActualizarVentasAsync(Ventas ventas);
     bool EliminarVentasPorId(int id);
 }
